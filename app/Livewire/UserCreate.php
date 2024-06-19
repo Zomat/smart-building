@@ -21,8 +21,6 @@ class UserCreate extends Component
 
     public function store()
     {
-        $this->message = "KLIKNIETO";
-
         $this->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',

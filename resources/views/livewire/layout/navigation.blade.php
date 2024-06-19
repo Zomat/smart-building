@@ -31,6 +31,14 @@ $logout = function (Logout $logout) {
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                @if ($routePrefix == 'admin.')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route($routePrefix.'logs')" :active="request()->routeIs('logs')" wire:navigate>
+                            {{ __('Logs') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
