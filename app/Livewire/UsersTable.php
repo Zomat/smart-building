@@ -14,6 +14,18 @@ class UsersTable extends Component
         $this->users = User::where('is_admin', false)->get();
     }
 
+    public function updateAccess($userId)
+    {
+        $user = User::find($userId);
+
+        if ($user) {
+            $user->access = !$user->access;
+            $user->save();
+            $this->mount();
+            $this->render();
+        }
+    }
+
     public function render()
     {
         return view('livewire.users-table', [

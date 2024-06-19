@@ -9,7 +9,13 @@
                     Name
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Token
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Created At
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Access
                 </th>
             </tr>
         </thead>
@@ -23,7 +29,15 @@
                         {{ $user->name }}
                     </td>
                     <td class="px-6 py-4">
+                        {{ $user->token }}
+                    </td>
+                    <td class="px-6 py-4">
                         {{ $user->created_at }}
+                    </td>
+                    <td class="px-6 py-4">
+                        <button class="px-4 py-2 font-bold text-white {{ !$user->access ? 'bg-red-500' : 'bg-indigo-500' }} rounded" wire:click="updateAccess({{ $user->id }})">
+                            {{ $user->access ? 'Revoke Access' : 'Grant Access' }}
+                        </button>
                     </td>
                 </tr>
             @endforeach

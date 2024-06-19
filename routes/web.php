@@ -17,6 +17,9 @@ Route::group([
 ], function () {
     Route::view('dashboard', 'admin.dashboard')
     ->name('dashboard');
+
+    Route::view('user/create', 'admin.user.create')
+    ->name('user.create');
 });
 
 Route::group([
