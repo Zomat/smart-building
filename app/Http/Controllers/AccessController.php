@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Logs;
 
 class AccessController extends Controller
 {
@@ -32,6 +33,11 @@ class AccessController extends Controller
         }
 
         if ($user->access == 1) {
+            Logs::create([
+                'user_id' => $user->id,
+                'device' => $request->device_type
+            ]);
+
             return response()->json([
                 'uid' => $token,
                 'access_granted' => true,
